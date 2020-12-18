@@ -1,3 +1,14 @@
+:root {
+  --green_cel: #048A81;
+  --white: #FBFEF9;
+  --black: #191923;
+  --red: #941C2F;
+  --orrange: #FF8811;
+
+}
+
+
+/* ##############################################----navbar----#################################################### */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
   margin: 0;
@@ -9,8 +20,12 @@
 body{
   background: #f2f2f2;
 }
+.body{
+  background: #f2f2f2;
+  padding: 4rem 5rem;
+}
 nav{
-  background: #1b1b1b;
+  background: var(--green_cel);
 }
 nav:after{
   content: '';
@@ -34,7 +49,7 @@ nav ul{
 nav ul li{
   float: left;
   display: inline-block;
-  background: #1b1b1b;
+  background: var(--green_cel);
   margin: 0 5px;
 }
 nav ul li a{
@@ -45,18 +60,19 @@ nav ul li a{
   padding: 8px 15px;
 }
 nav ul li a:hover{
-  color: cyan;
+  color: var(--white);
+  background-color: var(--red);
   border-radius: 5px;
-  box-shadow:  0 0 5px #33ffff,
-               0 0 10px #66ffff;
+  box-shadow:  0 0 5px var(--orrange),
 }
-nav ul ul li a:hover{
+nav ul ul li:hover{
   box-shadow: none;
+  background-color: var(--red);
 }
 nav ul ul{
   position: absolute;
   top: 90px;
-  border-top: 3px solid cyan;
+  border-top: 3px solid var(--red);
   opacity: 0;
   visibility: hidden;
   transition: top .3s;
@@ -120,7 +136,7 @@ nav ul ul ul li{
     cursor: pointer;
   }
   .show:hover{
-    color: cyan;
+    background-color: var(--red);
   }
   .icon{
     display: block;
@@ -173,7 +189,67 @@ header{
   font-weight: 600;
   padding: 10px 0;
 }
-p{
-  font-size: 30px;
-  font-weight: 500;
+/* ##############################################----navbar----#################################################### */
+
+
+.card{
+  width: 18rem;
+  border-radius: 10px;
+  background-color: var(--white);
+  
+} 
+.picture{
+  padding: 0.5rem 0 0.5rem 0;
+}
+.picture img{
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.promo{
+  background-color: var(--red);
+  color: var(--white);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  padding: 0.25rem;
+}
+.card-body{
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+}
+.card-body p{
+  font-size: 18px;
+  margin:0;
+}
+.rating{
+  color: var(--orrange);
+  font-size: 20px;
+}
+.primary-btn{
+  color: var(--white);
+  background-color: var(--green_cel);
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  text-decoration: none;
+  width: max-content;
+}
+.price{
+  display: flex;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.before-promo{
+  color: gray;
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+
+}
+.primary-btn:hover{
+  color: var(--green_cel);
+  background-color: var(--white);
+  border: var(--green_cel) 2px solid;
 }
