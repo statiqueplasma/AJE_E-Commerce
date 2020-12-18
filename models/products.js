@@ -5,7 +5,7 @@ var ProductSchema = new Schema({
     name: { type: String, required: true },    
     thumbnail: { type: String, required: true },
     pictures: { type: [String], required: true },
-    snypet: { type: String, required: true },
+    snippet: { type: String, required: true },
     description: { type: String, required: true },
     gender: { type: String, required: true },
     category: { type: String, required: true },
