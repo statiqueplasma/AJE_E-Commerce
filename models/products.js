@@ -29,6 +29,6 @@ var colors = new Schema({
 });
 
 module.exports = mongoose.model('product', ProductSchema);
-module.exports = mongoose.model('categories', Categories);
-module.exports = mongoose.model('genders', Genders);
-module.exports = mongoose.model('colors', colors);
+// module.exports = mongoose.model('categories', Categories);
+// module.exports = mongoose.model('genders', Genders);
+// module.exports = mongoose.model('colors', colors);

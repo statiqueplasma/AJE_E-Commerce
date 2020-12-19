@@ -1,12 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var Product = require('../models/products');
+
+require('dotenv/config');
+
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+    console.log("connected to db again!");
+});
+
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  var products = Product.find(function(err, obj){
-    res.render('index', { title: 'Express' , products: obj});
-  });
-  
+router.get('/', async function (req, res, next) {
+  const products = await Product.find();
+  res.render(products);
+
 });
 
 module.exports = router;
