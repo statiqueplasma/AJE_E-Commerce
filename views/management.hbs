@@ -1,0 +1,23 @@
+<div class="card">
+<h1>Categories</h1>
+{{#each categories}}
+    <p>name: {{name}}</p>       
+{{/each}}
+</div>
+</br>
+<div class="card">
+<h1>Sizes</h1>
+{{#each sizes}}
+    <p>name: {{name}}</p>       
+{{/each}}
+</div>
+</br>
+<div class="card">
+<h1>Colors</h1>
+{{#each colors}}
+    {{#each this }}
+        <p>name: {{name}}</p>
+        <p>picture: <img src={{picture}} alt=""></p>
+    {{/each}}
+{{/each}}
+</div>

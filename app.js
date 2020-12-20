@@ -4,15 +4,23 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressHbs = require('express-handlebars');
+var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
+var ManagementRoute = require('./routes/management');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+  console.log("CONNECTED TO DATABASE !");
+});
+mongoose.set('useCreateIndex', true);
+
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
-
+app.use(express.urlencoded({extended:false}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/management', ManagementRoute);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

@@ -6,7 +6,20 @@
   --orrange: #FF8811;
 
 }
-
+input[type="radio"] {
+  display: block;
+  position: relative;
+  opacity: 1.0;
+}
+input[type="checkbox"] {
+  display: block;
+  position: relative;
+  opacity: 1.0;
+}
+button[type="submit"]{
+  border-color: var(--green_cel);
+  width: 7.5rem;
+}
 
 /* ##############################################----navbar----#################################################### */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
@@ -26,6 +39,12 @@ body{
 }
 nav{
   background: var(--green_cel);
+  position: relative;
+  width: 100%;
+  z-index: 10000000;
+}
+nav input[type="checkbox"]{
+  display: none;
 }
 nav:after{
   content: '';
@@ -47,7 +66,6 @@ nav ul{
   position: relative;
 }
 nav ul li{
-  float: left;
   display: inline-block;
   background: var(--green_cel);
   margin: 0 5px;
@@ -200,12 +218,15 @@ header{
 } 
 .picture{
   padding: 0.5rem 0 0.5rem 0;
+  
 }
 .picture img{
   width: 70%;
+  height: 200px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  object-fit: cover;
 }
 .promo{
   background-color: var(--red);
@@ -252,4 +273,18 @@ header{
   color: var(--green_cel);
   background-color: var(--white);
   border: var(--green_cel) 2px solid;
+}
+
+.add-form{
+  width: 60%;
+  margin: auto;
+}
+.add-item-form .gender{
+  display: flex;
+}
+.form-group{
+  margin-bottom: 2rem;
+}
+.choices{
+  margin-left: 1rem;
 }

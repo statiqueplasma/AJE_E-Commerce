@@ -1,0 +1,75 @@
+    <div class="form-group">
+        <label for="name">Item's Name</label>
+        <input required type="text" name="name" id="name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="snippet">Item's Snippet</label>
+        <input required type="text" name="snippet" id="snippet" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="description">Item's Description</label>
+        <textarea name="description" id="description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="thumbnail">Item's Thumbnail</label>
+        <input required type="file" name="thumbnail" id="thumbnail" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="pictures">Item's Pictures</label>
+        <input required type="file" name="pictures" id="pictures" class="form-control" multiple>
+    </div>
+    <div class="form-group">
+        <label for="price">Item's Price per Unit (in "MAD")</label>
+        <input style="width: 100px;" required type="number" name="price" id="price" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="promo">Promo (put 0 is no promo is applied to this item)</label>
+        <input style="width: 100px;" required type="number" name="promo" id="promo" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="inStock">Quantity in Stock</label>
+        <input style="width: 100px;" required type="number" name="inStock" id="inStock" class="form-control">
+    </div>
+    <div class="form-group gender">Gender:
+        <div class="choices">
+            <div class="form-check">
+                <input required type="radio" name="gender" id="male" value="male" class="form-check-input">
+                <label for="male" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check">
+                <input required type="radio" name="gender" id="female" value="female" class="form-check-input">
+                <label for="female" class="form-check-label">Female</label>
+            </div>
+            <div class="form-check">
+                <input required type="radio" name="gender" id="both" value="both" class="form-check-input">
+                <label for="both" class="form-check-label">both</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">Sizes:
+        <div class="choices">
+        {{#each sizes}} 
+        <div class="form-check">
+        <label for="{{name}}">{{name}}</label>
+        <input required type="checkbox" name="colors" id="{{name}}" class="form-check-input">
+        </div>
+        {{/each}}
+        </div>
+    </div>
+    <div class="form-group">Colors:
+        {{#each colors}}
+        <input required type="checkbox" name="colors" id="{{name}}" class="form-check-input">
+        <img src={{picture}} alt="">
+        <label for="{{name}}">{{name}}</label>
+        {{/each}}
+    </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <select name="category" id="category" class="form-select" aria-label="Default select example">
+            {{#each categories}}
+            <option value="{{name}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <button type="submit" class="primary-btn">Add Item</button>
