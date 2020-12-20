@@ -1,5 +1,31 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
-{{# each product}}
-    {{> ProductCard}}
+{{# each products}}
+    <div class="card">
+        <div class="picture">
+            <img src="https://pcbonlineshop.com/var/photo/product/2000x4000/4/176/4.jpg" alt="">
+        </div>
+
+        <div class="card-body">
+            <h2>{{this.name}}</h2>
+            <p>{{this.snippet}}</p>
+            <p class="rating"><i class="fas fa-star"></i> {{this.rate}}</p>
+            <div class="price">
+                {{!-- ############---start of: don't know if i can mplement this---####### --}}
+                <h5 class="before-promo">{{this.normalPrice}} MAD</h5>
+
+                <h5>{{this.normalPrice}}$</h5>
+                {{!-- ############---end of: don't know if i can mplement this---####### --}}
+            </div>
+            <a class="primary-btn" href="#">Add to Cart</a>
+        </div>
+        {{!-- ############---start of: don't know if i can mplement this neither xD ---####### --}}
+        
+        {{!-- ############---end of: don't know if i can mplement this neither xD ---####### --}}
+        <div class="promo">
+            <h4 style="margin: 0;">PROMO -{{this.promo}}%</h4>
+        </div>
+
+    </div>
 {{/each}}
+
