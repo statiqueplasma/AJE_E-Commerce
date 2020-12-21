@@ -307,6 +307,7 @@ header{
   background-color: rgb(0, 0, 0, 0.5);
 }
 
+
 .title-block a {
   display: flex;
   align-items: center;
@@ -334,5 +335,7 @@ header{
     width: max-content;
     position: relative;
   }
-
+.modal h5,p,label{
+  color: var(--black)
+}
 }
