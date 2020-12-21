@@ -43,3 +43,5 @@ const categories = mongoose.model('categories', Categories);
 const colors = mongoose.model('colors', Colors);
 const sizes = mongoose.model('sizes', Sizes);
 module.exports = {product:product, categories:categories, colors:colors, sizes:sizes};
+
+
