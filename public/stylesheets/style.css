@@ -36,12 +36,16 @@ body{
 .body{
   background: #f2f2f2;
   padding: 4rem 5rem;
+  top:100px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 nav{
   background: var(--green_cel);
-  position: relative;
+  position: fixed;
+  z-index: 99999;
   width: 100%;
-  z-index: 10000000;
 }
 nav input[type="checkbox"]{
   display: none;

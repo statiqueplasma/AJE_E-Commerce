@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var ManagementRoute = require('./routes/management');
 var usersRouter = require('./routes/users');
+const methodOverride = require('method-override');
 
 var app = express();
 
@@ -26,7 +27,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/uploads',express.static('uploads'));
+app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/management', ManagementRoute);
 app.use('/users', usersRouter);
