@@ -1,12 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var Product = require('../models/products');
+var {product} = require('../models/products');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  var products = Product.find(function(err, obj){
-    res.render('index', { title: 'Express' , products: obj});
-  });
-  
+router.get('/', async function(req, res) {
+  var products = await product.find().lean();
+    res.render('index', { title: 'Express' , products: products}); 
 });
 
 module.exports = router;
