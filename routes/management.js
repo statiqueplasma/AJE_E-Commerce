@@ -80,6 +80,11 @@ router.post('/item', upload.fields([{ name: 'thumbnail', maxCount: 1 }, { name: 
     
 });
 
+router.delete('/del-item/:id', async function(req, res){
+    await product.findByIdAndDelete(req.params.id);
+    res.redirect('/management')
+});
+
 router.get('/add-category', function (req, res) {
     res.render('add_category');
 });
