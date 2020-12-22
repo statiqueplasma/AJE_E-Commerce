@@ -48,7 +48,7 @@
                         <label for="name">Size</label>
                         <input required type="text" name="name" id="name" class="form-control">
                     </div>
-                    <button style="float:right;" type="submit" class="primary-btn">Add Category</button>
+                    <button style="float:right;" type="submit" class="primary-btn">Add Size</button>
                 </form>
             </div>
 
@@ -74,7 +74,7 @@
                         <label for="picture">Color's Image Representative</label>
                         <input required type="file" name="picture" id="picture" class="form-control">
                     </div>
-                    <button style="float:right;" type="submit" class="primary-btn">Add Category</button>
+                    <button style="float:right;" type="submit" class="primary-btn">Add Color</button>
                 </form>
             </div>
 
@@ -95,7 +95,7 @@
         {{#each categories}}
         <div classe="management-object">
             <p>name: {{name}}</p>
-            <form id="del-item-form" action="/management/del-cat/{{_id}}?_method=DELETE" method="POST"> <button
+            <form action="/management/del-cat/{{_id}}?_method=DELETE" method="POST"> <button
                     style="float: right; width: max-content; " type="submit" class="btn btn-danger"><i
                         class="fas fa-trash-alt"></i></button></form>
         </div>
@@ -152,7 +152,8 @@
             <h1>Items</h1>
             <a href="/management/add-item" class="primary-btn"><i class="fas fa-plus-square"></i></a>
         </div>
-        <table style="height:2000px"class="table table-striped table-hover table-bordered ">
+        <div style="height:1500px" class="table-responsive">
+        <table style="height:1500px"class="table table-striped table-hover table-bordered ">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -175,7 +176,7 @@
             <tbody>
                 {{#each product}}
                 <tr>
-                    <th scope="row">{{@index}}: {{this}}</th>
+                    <th scope="row">{{@index}}</th>
                     <td><img style="width:1.5rem" src="/{{thumbnail}}" alt=""></td>
                     <th scope="col">{{name}}</th>
                     <th scope="col">{{gender}}</th>
@@ -197,6 +198,7 @@
                 {{/each}}
             </tbody>
         </table>
+        </div>
 
     </div>
 </div>
