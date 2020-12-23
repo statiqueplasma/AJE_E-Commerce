@@ -1,8 +1,33 @@
-
-<div class="row ">
-{{# each products}}
-<div style="justify-content: center; display: flex ; margin-bottom: 1.5rem" class="col-lg">
- {{> ProductCard}}
- </div>
-{{/each}}
+<div style="width: 100%;" class="row">
+    <div id="pub-row" class="col-lg-2">
+        {{!-- item adds hear or wdgets it depends xD --}}
+        {{#each products}}
+            <div style="margin: 0.5rem 0 0.5rem 0.5rem;">
+                <img style="width:100%"src="{{thumbnail}}" alt="">
+            </div>
+            {{/each}}
+    </div>
+    <div class="col-xs-12 col-lg-10">
+        <div  class="row card-rows">
+            {{#each products}}
+            <div class="col-lg">
+                {{> ProductCard}}
+            </div>
+            {{/each}}
+        </div>
+<div class="pagination">
+    {{#if pages.previous}}
+        <a class="primary-btn" href="/page/{{pages.previous}}"> Previous</a>
+        <a class="primary-btn" href="/page/{{pages.previous}}">{{pages.previous}}</a>
+    {{/if}}
+    <a class="primary-btn-hover" href="#">{{pages.current}}</a>
+    {{#if pages.next}}
+    <a class="primary-btn" href="/page/{{pages.next}}">{{pages.next}}</a>
+    {{/if}}
+    <p>out of {{pages.numb}}</p>
+    {{#if pages.next}}
+    <a class="primary-btn" href="/page/{{pages.next}}">Next </a>
+    {{/if}}
+</div>
+    </div>
 </div>

@@ -16,7 +16,13 @@ var ProductSchema = new Schema({
     normalPrice: { type: Number, required: true },
     promo: { type: Number, default: 0},
     sold_price: { type: Number, required: true },
-    date: {type: Date, default: Date.now()}
+    date: {type: Date, default: Date.now()},
+    comments: []
+});
+
+var Comments = new Schema({
+    name: {type:String, unique:true},
+    comment: [{id: String, text: String, rate: Number}]
 });
 
 var Categories = new Schema({
@@ -24,7 +30,8 @@ var Categories = new Schema({
 });
 
 var Sizes = new Schema({
-    name: { type: String, required: true, unique: true}
+    name: { type: String, required: true, unique: true},
+    size:{ type:String, required: true}
 });
 
 var Colors = new Schema({
@@ -38,10 +45,11 @@ ProductSchema.pre('validate', function(){
     }
 });
 
+const comments = mongoose.model('comments', Comments);
 const product = mongoose.model('product', ProductSchema)
 const categories = mongoose.model('categories', Categories);
 const colors = mongoose.model('colors', Colors);
 const sizes = mongoose.model('sizes', Sizes);
-module.exports = {product:product, categories:categories, colors:colors, sizes:sizes};
+module.exports = {product:product, categories:categories, colors:colors, sizes:sizes, comments:comments};
 
 
