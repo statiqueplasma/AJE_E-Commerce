@@ -6,14 +6,15 @@ var logger = require('morgan');
 var expressHbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
-var ManagementRoute = require('./routes/management');
+var ManagementRouter = require('./routes/management');
 var usersRouter = require('./routes/users');
+var productRouter = require('./routes/product');
 const methodOverride = require('method-override');
 
 var app = express();
 
 
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true}, () => {
   console.log("CONNECTED TO DATABASE !");
 });
 mongoose.set('useCreateIndex', true);
@@ -30,7 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads',express.static('uploads'));
 app.use(methodOverride('_method'));
 app.use('/', indexRouter);
-app.use('/management', ManagementRoute);
+app.use('/management', ManagementRouter);
+app.use('/product', productRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

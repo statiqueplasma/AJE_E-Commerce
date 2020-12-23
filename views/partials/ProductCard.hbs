@@ -1,27 +1,28 @@
 <div class="card">
-    <div class="picture">
+    <div onclick="location.href='/product/{{_id}}';" class="picture">
         <img src={{thumbnail}} alt="">
     </div>
+    <div  class="card-body">
+        <div onclick="location.href='/product/{{_id}}';" class="link">
+            <h2>{{name}}</h2>
+            <p>{{snippet}}</p>
+            <p class="rating"><i class="fas fa-star"></i> {{rate}}</p>
+        </div>
+            <div class="price">
 
-    <div class="card-body">
-        <h2>{{name}}</h2>
-        <p>{{snippet}}</p>
-        <p class="rating"><i class="fas fa-star"></i> {{rate}}</p>
-        <div class="price">
-            {{!-- ############---start of: don't know if i can mplement this---####### --}}
-            {{#if promo}}
+                {{#if promo}}
                 <h5>{{normalPrice}} MAD</h5>
                 <h5 class="before-promo">{{normalPrice}} MAD</h5>
-            {{else}}
+                {{else}}
                 <h5>{{normalPrice}} MAD</h5>
-            {{/if}}
-            {{!-- ############---end of: don't know if i can mplement this---####### --}}
-        </div>
+                {{/if}}
+
+            </div>
         <a class="primary-btn" href="#">Add to Cart</a>
     </div>
-    {{!-- ############---start of: don't know if i can mplement this neither xD ---####### --}}
+
     {{#if promo }}
-    {{!-- ############---end of: don't know if i can mplement this neither xD ---####### --}}
+
     <div class="promo">
         <h4 style="margin: 0;">PROMO -{{promo}}%</h4>
     </div>
