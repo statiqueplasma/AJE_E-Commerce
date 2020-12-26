@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var session = require('express-session');
 var passport = require('passport');
-var flash  require('connect-flash');
+var flash = require('connect-flash');
 
 var app = express();
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
