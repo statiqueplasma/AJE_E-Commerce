@@ -1,43 +1,160 @@
 <nav>
     <div class="logo">
-        CodingNepal</div>
-    <label for="btn" class="icon">
-        <span class="fa fa-bars"></span>
-    </label>
-    <input type="checkbox" id="btn">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li>
-            <label for="btn-1" class="show">Features +</label>
-            <a href="/management">Management</a>
-            <input type="checkbox" id="btn-1">
-            <ul>
-                <li><a href="/management/add-item">Add item</a></li>
-                <li><a href="/management/add-category">Add Category</a></li>
-                <li><a href="/management/add-color">Add Color</a></li>
-                <li><a href="/management/add-size">Add size</a></li>
-            </ul>
-        </li>
-        <li>
-            <label for="btn-2" class="show">Services +</label>
-            <a href="#">Services</a>
-            <input type="checkbox" id="btn-2">
-            <ul>
-                <li><a href="#">Web Design</a></li>
-                <li><a href="#">App Design</a></li>
-                <li>
-                    <label for="btn-3" class="show">More +</label>
-                    <a href="#">More <span class="fa fa-plus"></span></a>
-                    <input type="checkbox" id="btn-3">
-                    <ul>
-                        <li><a href="#">Submenu-1</a></li>
-                        <li><a href="#">Submenu-2</a></li>
-                        <li><a href="#">Submenu-3</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
+        <h1>CRYSTAL</h1>
+    </div>
+    <ul class="nav-links">
+        <div class="nav-link">
+            <li>
+                <i class="fas fa-shopping-bag"></i>
+                <p class="label">Shop</p>
+            </li>
+        </div>
+
+        <div class="nav-link filter-toggler">
+            <li>
+                <a class="filter-toggler">
+                    <i class="fas fa-filter"></i>
+                    <p class="label">Filter</p>
+                </a>
+            </li>
+        </div>
+
+        <div class="nav-link">
+            <li>
+                <i class="fas fa-user"></i>
+                <p class="label">My Profile</p>
+            </li>
+        </div>
+        <div class="nav-link">
+            <li>
+                <i class="fas fa-phone-alt"></i>
+                <p class="label">Contact</p>
+            </li>
+        </div>
     </ul>
+
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+
 </nav>
+
+<div class="container passive">
+    <form class="search-bar" method="POST" action="/" >
+        <input id="search-input" type="text" autocomplete="off" name="search" placeholder="Search for items">
+        <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+    </form>
+
+    <form class="filter-form" method="POST" action="/">
+
+        <div class="gender filter-col">
+            <div class="label gender-label">Gender</div>
+            <div class="gender-filter actual-filter">
+                <label class="gender" for="male"><input id="male" type="radio" name="gender" value="Male">Male</label>
+                <label class="gender" for="female"><input id="female" type="radio" name="gender"
+                        value="Female">Female</label>
+                <label class="gender" for="unisex"><input id="unisex" type="radio" name="gender"
+                        value="Unisex">Unisex</label>
+            </div>
+            <hr>
+        </div>
+
+
+        <div class="categories filter-col">
+            <div class="label category-label">Categories</div>
+            <div class="category-filter  actual-filter">
+                <label class="category" for="shirt"><input id="shirt" type="checkbox" name="categories"
+                        value="shirt">Shirts</label>
+                <label class="category" for="hoodie"><input id="hoodie" type="checkbox" name="categories"
+                        value="hoodie">Hoodies</label>
+                <label class="category" for="jacket"><input id="jacket" type="checkbox" name="categories"
+                        value="jacket">Jackets</label>
+                <label class="category" for="jeans"><input id="jeans" type="checkbox" name="categories"
+                        value="jeans">Jeans</label>
+                <label class="category" for="pants"><input id="pants" type="checkbox" name="categories"
+                        value="pants">Pants</label>
+                <label class="category" for="short"><input id="short" type="checkbox" name="categories"
+                        value="short">Shorts</label>
+                <label class="category" for="underwear"><input id="underwear" type="checkbox" name="categories"
+                        value="underwear">Underwear</label>
+                <label class="category" for="t-shirt"><input id="t-shirt" type="checkbox" name="categories"
+                        value="t-shirt">T-shirts</label>
+            </div>
+            <hr>
+
+        </div>
+
+
+        <div class="sizes filter-col">
+            <div class="label size-label">Sizes</div>
+            <div class="size-filter actual-filter ">
+                <label class="size" for="xxs"><input id="xxs" type="checkbox" name="sizes" value="XXS">XXS</label>
+                <label class="size" for="xs"><input id="xs" type="checkbox" name="sizes" value="XS">XS</label>
+                <label class="size" for="s"><input id="s" type="checkbox" name="sizes" value="S">S</label>
+                <label class="size" for="m"><input id="m" type="checkbox" name="sizes" value="M">M</label>
+                <label class="size" for="l"><input id="l" type="checkbox" name="sizes" value="L">L</label>
+                <label class="size" for="xl"><input id="xl" type="checkbox" name="sizes" value="XL">XL</label>
+                <label class="size" for="xxl"><input id="xxl" type="checkbox" name="sizes" value="XXL">XXL</label>
+                <label class="size" for="xxxl"><input id="xxxl" type="checkbox" name="sizes" value="XXXL">XXXL</label>
+            </div>
+        </div>
+
+
+        <div class="ratings filter-col">
+            <div class="label rating-label">Rating</div>
+            <div class="rating-filter actual-filter">
+                <div class="rating">
+                    <label class="rating" for="4-stars">
+                        <input id="4-stars" type="radio" name="rating" value="4"><img class="stars-img"
+                            src="/stylesheets/stars/4-stars.png" height="16px"><span
+                            class="et-plus">Et&nbsp;Plus</span></input>
+                    </label>
+                </div>
+                <div class="rating">
+                    <label class="rating" for="3-stars">
+                        <input id="3-stars" type="radio" name="rating" value="3"><img class="stars-img"
+                            src="/stylesheets/stars/3-stars.png" height="16px"><span
+                            class="et-plus">Et&nbsp;Plus</span></input>
+                    </label>
+                </div>
+                <div class="rating">
+                    <label class="rating" for="2-stars">
+                        <input id="2-stars" type="radio" name="rating" value="2"><img class="stars-img"
+                            src="/stylesheets/stars/2-stars.png" height="16px"><span
+                            class="et-plus">Et&nbsp;Plus</span></input>
+                    </label>
+                </div>
+                <div class="rating">
+                    <label class="rating" for="1-stars">
+                        <input id="1-stars" type="radio" name="rating" value="1"><img class="stars-img"
+                            src="/stylesheets/stars/1-stars.png" height="16px"><span
+                            class="et-plus">Et&nbsp;Plus</span></input>
+                    </label>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+
+        <div class="last-filter filter-col ">
+            <div class="price-filter">
+                <div class="label price-label">Price</div>
+                <div class="rangeslider">
+                    <input class="min" name="range_1" type="range" min="0" max="2000" value="0" step="1" />
+                    <input class="max" name="range_2" type="range" min="0" max="2000" value="2000" step="1" />
+                    <span class="range_min light left">0 MAD</span>
+                    <span class="range_max light right">2 000 MAD</span>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="apply-filters">Filter</button>
+                <button type="button" class="return">Return</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+

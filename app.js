@@ -13,6 +13,7 @@ const methodOverride = require('method-override');
 
 var app = express();
 
+require("dotenv/config");
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true}, () => {
   console.log("CONNECTED TO DATABASE !");
@@ -36,9 +37,9 @@ app.use('/product', productRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
