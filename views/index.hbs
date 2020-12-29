@@ -1,26 +1,70 @@
-<div style="width: 100%;" class="row">
-    <div class="col-xs-12 col-lg-10">
-        <div class="contents">
-            {{#each products}}
-            {{> ProductCard}}
-            {{/each}}
-        </div>
-        <div class="pagination">
-            {{#if pages.previous}}
-            <a class="primary-btn" href="/page/{{pages.previous}}"> Previous</a>
-            <a class="primary-btn" href="/page/{{pages.previous}}">{{pages.previous}}</a>
-            {{/if}}
-            <a class="primary-btn-hover" href="#">{{pages.current}}</a>
-            {{#if pages.next}}
-            <a class="primary-btn" href="/page/{{pages.next}}">{{pages.next}}</a>
-            {{/if}}
-            <p>out of {{pages.numb}}</p>
-            {{#if pages.next}}
-            <a class="primary-btn" href="/page/{{pages.next}}">Next </a>
-            {{/if}}
-        </div>
+<div class="row">
+
+    <div class="contents">
+        {{#each products}}
+        {{> ProductCard}}
+        {{/each}}
     </div>
+
+
 </div>
+
+<hr class="separator">
+
+<div class="pagination">
+
+    {{#if pages.previous}}
+    <a href="/page/{{pages.previous}}">
+        <div class="navigate-pages prev-btn">
+            <p>Previous</p>
+        </div>
+    </a>
+    {{/if}}
+    <!--takes to previous page-->
+    <div class="pages">
+        {{#if pages.previous}}
+        <a href="/page/{{pages.previous}}">
+            <div class="navigate-pages page">
+                <p>{{pages.previous}}</p>
+            </div>
+        </a>
+        <div class="vertical-line"></div>
+        <!--displays the number of previous page-->
+        {{/if}}
+
+        <a href="#">
+            <div class="navigate-pages current-page">
+                <p>{{pages.current}}</p>
+            </div>
+        </a>
+        <!--displays the number of the current page-->
+
+        {{#if pages.next}}
+        <div class="vertical-line"></div>
+        <a href="/page/{{pages.next}}">
+            <div class="navigate-pages page">
+                <p>{{pages.next}}</p>
+            </div>
+        </a>
+        {{/if}}
+    </div>
+    {{#if pages.next}}
+    <!--takes to next page-->
+    <a href="/page/{{pages.next}}">
+        <div class="navigate-pages next-btn">
+            <p>Next</p>
+        </div>
+    </a>
+    {{/if}}
+
+</div>
+
+
+
+
+
+
+
 
 <div class="modal fade" tabindex="-1" id="add-cart">
     <div class="modal-dialog modal-dialog-centered modal-xl">
