@@ -11,20 +11,34 @@
 /* ##############################################----navbar----#################################################### */
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  overflow-y: scroll;
   font-family: 'Poppins', sans-serif;
 }
 
 .body {
   top: 8vh;
   position: relative;
+}
+
+nav{
+  align-items: center;
+  top: 0;
+  width: 100%;
+}
+.nav-links{
+  margin: 0;
+}
+
+.nav-link, .filter-toggler{
+  display: flex;
+  align-items: center;
+  color: white !important;
+}
+a{
+  text-decoration: none;
+}
+.container{
+  width: 100vw;
 }
 
 

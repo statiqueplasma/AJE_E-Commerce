@@ -91,7 +91,7 @@ router.get('/page/:page', (req, res) => {
 
 router.post('/', (req, res) => {
   if ("search" in req.body) {
-    var keywords = new RegExp(req.body["search"].replace(/ /g, "|"));
+    var keywords = new RegExp(req.body["search"].replace(/ /g, "|"), "ig");
     product.find({
       $or: [
         { gender: keywords },

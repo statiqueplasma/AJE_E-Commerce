@@ -1,5 +1,5 @@
 :root {
-    --khaki: #e2e2e2;
+    --khaki: #FFEEEE;
     --cool-blue: rgb(0, 0, 0);
     --pale-reddish-pink: rgb(238, 113, 124);
     --reddish-pink: rgb(234, 83, 95);
@@ -17,6 +17,7 @@
 }
 
 body {
+    background-color:rgb(221, 221, 221);
     font-family: 'Poppins', sans-serif;
     height: 100vh;
 }

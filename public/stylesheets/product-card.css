@@ -16,7 +16,6 @@
 
 .contents {
     min-height: 100vh;
-    background-color: rgb(255, 255, 255);
     min-width: 100vw;
     display: flex;
     justify-content: space-evenly;
@@ -97,6 +96,11 @@ a {
     height: 23rem;
     width: 16rem;
     background-color: #ffffff;
+    box-shadow: 0 2px 5px 1.5px rgb(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+.card:hover{
     box-shadow: 0 4px 5px 3px rgb(0, 0, 0, 0.25);
 }
 
@@ -125,6 +129,8 @@ a {
     top: 1rem;
     transform: translateX(-12%);
     padding: 0.5rem 1.5rem;
+    color: white;
+    font-weight: bold;
 }
 
 .card-bottom {
