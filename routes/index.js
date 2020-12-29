@@ -6,7 +6,7 @@ router.get('/',function(req,res){
   res.redirect('/page/1');
 });
 router.get('/page/:page', async function(req, res) {
-  var products = await product.find().lean();
+  var products = await product.find({name:'test4'}).lean();
   try{var curpage = req.params.page;
   var numItem = 30;
   var numbPages = Math.trunc(products.length/numItem)+1;
@@ -22,6 +22,11 @@ router.get('/page/:page', async function(req, res) {
   catch(err){
     console.log(err);
   }
+});
+
+router.get('/get-item/:id', async function(req,res){
+  var products = await product.findById(req.params.id);
+  res.send({name:products.name, snippet:products.snippet, colors:products.colors, thumbnail:products.thumbnail, sizes:products.sizes})
 });
 
 module.exports = router;

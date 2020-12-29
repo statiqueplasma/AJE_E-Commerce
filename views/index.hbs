@@ -2,32 +2,117 @@
     <div id="pub-row" class="col-lg-2">
         {{!-- item adds hear or wdgets it depends xD --}}
         {{#each products}}
-            <div style="margin: 0.5rem 0 0.5rem 0.5rem;">
-                <img style="width:100%"src="{{thumbnail}}" alt="">
-            </div>
-            {{/each}}
+        <div style="margin: 0.5rem 0 0.5rem 0.5rem;">
+            <img style="width:100%" src="{{thumbnail}}" alt="">
+        </div>
+        {{/each}}
     </div>
     <div class="col-xs-12 col-lg-10">
-        <div  class="row card-rows">
+        <div class="row card-rows">
             {{#each products}}
             <div class="col-lg">
                 {{> ProductCard}}
             </div>
+
             {{/each}}
         </div>
-<div class="pagination">
-    {{#if pages.previous}}
-        <a class="primary-btn" href="/page/{{pages.previous}}"> Previous</a>
-        <a class="primary-btn" href="/page/{{pages.previous}}">{{pages.previous}}</a>
-    {{/if}}
-    <a class="primary-btn-hover" href="#">{{pages.current}}</a>
-    {{#if pages.next}}
-    <a class="primary-btn" href="/page/{{pages.next}}">{{pages.next}}</a>
-    {{/if}}
-    <p>out of {{pages.numb}}</p>
-    {{#if pages.next}}
-    <a class="primary-btn" href="/page/{{pages.next}}">Next </a>
-    {{/if}}
-</div>
+        <div class="pagination">
+            {{#if pages.previous}}
+            <a class="primary-btn" href="/page/{{pages.previous}}"> Previous</a>
+            <a class="primary-btn" href="/page/{{pages.previous}}">{{pages.previous}}</a>
+            {{/if}}
+            <a class="primary-btn-hover" href="#">{{pages.current}}</a>
+            {{#if pages.next}}
+            <a class="primary-btn" href="/page/{{pages.next}}">{{pages.next}}</a>
+            {{/if}}
+            <p>out of {{pages.numb}}</p>
+            {{#if pages.next}}
+            <a class="primary-btn" href="/page/{{pages.next}}">Next </a>
+            {{/if}}
+        </div>
     </div>
 </div>
+
+<div class="modal fade" tabindex="-1" id="add-cart">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add To cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="item-details">
+                    <div id="item-thumbnail">
+                        {{!-- thumbnail JS  --}}
+                    </div>
+                    <h3 id="item-name">
+                         {{!-- name JS  --}}
+                    </h1>
+                    <p id="item-snippet"> 
+                        {{!-- snippet JS  --}}
+                    </p>
+
+                </div>
+                <form action="/user/add-cart" method="POST">
+                    <div class="form-group">
+                        Select a Sizes:
+                        <div id="size-js" class="form-group">
+                            {{!-- sizes in JS --}}
+                        </div>
+                        Select a Colors:
+                        <div id="color-js" class="form-group">
+                            {{!-- colors in JS --}}
+                        </div>
+                        <input  type="hidden" name="product_id" id="product_id" value="">
+                        <button style="float:right;" type="submit" class="primary-btn">Add to Cart</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function Createpopup(id) {
+        var req = new XMLHttpRequest();
+        req.open("GET", "/get-item/" + id, true);
+        req.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                var sizehtml = '<div class="choices">';
+                var colorhtml = '<div class="row choices">';
+                console.log(data);
+                data.sizes.forEach(size => {
+                    console.log(size);
+                    sizehtml += '<div class="form-check">';
+                    sizehtml += '<input value = "' + size + '" type = "checkbox" name = "sizes" id = "sizes" class="form-check-input">';
+                    sizehtml += '<label for="' + size + '">' + size + '</label>';
+                    sizehtml += '</div>';
+                });
+                sizehtml += '</div>';
+                data.colors.forEach(color => {
+                    console.log(color);
+                    colorhtml += '<div class="form-check col-lg">';
+                    colorhtml += '<input value="' + color.name + '" type="radio" name="colors" id="colors" class="form-check-input">';
+                    colorhtml += '<img style="width: 3rem;" for="' + color.name + '" src="/' + color.picture + '" alt="' + color.name + '">';
+                    colorhtml += '</div>';
+                });
+                colorhtml += '</div>';
+                document.getElementById("size-js").innerHTML = sizehtml;
+                document.getElementById("color-js").innerHTML = colorhtml;
+                document.getElementById("item-name").innerHTML = data.name;
+                document.getElementById("item-thumbnail").innerHTML = '<img style="width:6rem;" src="/' + data.thumbnail + '" alt="">';
+                document.getElementById("item-snippet").innerHTML = data.snippet;
+                document.getElementById("product_id").value = id;
+                var myModal = new bootstrap.Modal(document.getElementById('add-cart'));
+                myModal.show();
+            }
+        };
+        req.send();
+
+    }
+</script>

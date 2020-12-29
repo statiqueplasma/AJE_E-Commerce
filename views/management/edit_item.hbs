@@ -1,34 +1,44 @@
+
+
 <div class="add-form">
     <h1>Add Item</h1>
-    <form action="/management/item" method="POST" enctype="multipart/form-data">
+    <form action="/management/edit-item?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Item's Name</label>
-            <input required type="text" name="name" id="name" class="form-control">
+            <input value="{{item.name}}" required type="text" name="name" id="name" class="form-control">
         </div>
         <div class="form-group">
             <label for="snippet">Item's Snippet</label>
-            <input required type="text" name="snippet" id="snippet" class="form-control">
+            <input value="{{item.snippet}}" required type="text" name="snippet" id="snippet" class="form-control">
         </div>
         <div class="form-group">
             <label for="description">Item's Description</label>
             <textarea required style="height:400px;" name="description" id="description"
-                class="form-control"></textarea>
+                class="form-control">{{item.description}}</textarea>
         </div>
         <div class="form-group">
             <label for="thumbnail">Item's Thumbnail</label>
+            <img src="/{{item.thumbnail}}" alt="">
             <input required type="file" name="thumbnail" id="thumbnail" class="form-control">
         </div>
         <div class="form-group">
             <label for="pictures">Item's Pictures</label>
+            <div class="pictures-show">
+                    {{#each item.pictures}}
+                        <div class="pcture-element">
+                            <img src="/{{this}}" alt="">
+                        </div>
+                    {{/each}}
+            </div>
             <input required type="file" name="pictures" id="pictures" class="form-control" multiple>
         </div>
         <div class="form-group">
             <label for="price">Item's Price per Unit (in "MAD")</label>
-            <input style="width: 100px;" required type="number" name="price" id="price" class="form-control">
+            <input value="{{item.normalprice}}" style="width: 100px;" required type="number" name="price" id="price" class="form-control">
         </div>
         <div class="form-group">
             <label for="promo">Promo</label>
-            <input style="width: 100px;" type="number" name="promo" id="promo" class="form-control">
+            <input value="{{item.promo}}" style="width: 100px;" type="number" name="promo" id="promo" class="form-control">
         </div>
         <div class="form-group">
             <label for="inStock">Quantity in Stock</label>
@@ -62,8 +72,8 @@
         </div>
         <div class="form-group">
             <label for="category">Category:</label>
-            <select required name="category" id="category" class="form-select" aria-label="Default select example">
-                 <option value="" selected disabled hidden>Choose category</option>
+            <select value="{{item.category}}" required name="category" id="category" class="form-select" aria-label="Default select example">
+                <option value="" selected disabled hidden>Choose category</option>
                 {{#each categories}}
                 <option value="{{name}}">{{name}}</option>
                 {{/each}}
@@ -85,4 +95,10 @@
                 uploadUrl: '/management/uploads'
             }
         });
+    var category = '<option value="" selected disabled hidden>Choose category</option>';
+    var categories = {{categories}};
+
+    category += 
+    
+    document.getElementById('category').innerhtml
 </script>

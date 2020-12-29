@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
   res.render('comment');
 });
 
-router.get('/:id', async function(re,res){
+router.get('/:id', async function(req,res){
   var item = await product.findById(req.params.id);
   res.render('productpage',{item:item});
 });
@@ -16,7 +16,7 @@ router.get('/:id', async function(re,res){
 router.post('/add-comment', async function(req, res){
 
   let comment = {id:req.body.idt, text:req.body.comment, rate: req.body.rate};
-  await comments.updateOne(
+  await product.updateOne(
     { name: req.body.name }, 
     { $push: { comment: comment } });
 });

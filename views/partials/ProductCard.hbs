@@ -1,6 +1,6 @@
 <div class="card">
     <div onclick="location.href='/product/{{_id}}';" class="picture">
-        <img src={{thumbnail}} alt="">
+        <img src='/{{thumbnail}}' alt="">
     </div>
     <div  class="card-body">
         <div onclick="location.href='/product/{{_id}}';" class="link">
@@ -11,14 +11,14 @@
             <div class="price">
 
                 {{#if promo}}
-                <h5>{{normalPrice}} MAD</h5>
+                <h5>{{sold_price}}MAD</h5>
                 <h5 class="before-promo">{{normalPrice}} MAD</h5>
                 {{else}}
                 <h5>{{normalPrice}} MAD</h5>
                 {{/if}}
 
             </div>
-        <a class="primary-btn" href="#">Add to Cart</a>
+        <a class="primary-btn" onclick="Createpopup('{{_id}}')" >Add to Cart</a>
     </div>
 
     {{#if promo }}

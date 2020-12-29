@@ -37,8 +37,8 @@ router.get('/', async function (req, res) {
     var color = await colors.find().lean();
     var categorie = await categories.find().lean();
     var size = await sizes.find().lean();
-    try{res.render('management/management', { colors: color, product: products, categories: categorie, sizes: size });}
-    catch(err){
+    try { res.render('management/management', { colors: color, product: products, categories: categorie, sizes: size }); }
+    catch (err) {
         console.log(err);
     }
 
@@ -52,30 +52,49 @@ router.get('/add-item', async function (req, res) {
 });
 
 
-router.post('/item', upload.fields([{ name: 'thumbnail', maxCount: 1 }, { name: 'pictures' }, { name: 'description' }]), async function (req, res) {
+router.post('/item', upload.fields([{ name: 'thumbnail', maxCount: 1 }, { name: 'pictures' }]), async function (req, res) {
     var pictures = [];
     req.files.pictures.forEach(function (element) {
-        arr.push(element.path);
+        pictures.push(element.path);
     });
+    console.log('color from body', req.body.colors);
+    var colorsarr = [];
+    if (typeof req.body.colors === 'string') {
+        
+        var color = await colors.findOne({ name: req.body.colors });
+        console.log(color);
+        colorsarr.push(color);
+    }
+    else {
+        const promises = req.body.colors.map(async (colorname) => {
+            const color = await colors.findOne({ name: colorname });
+            console.log(color);
+            return color;
+
+        });
+        colorsarr = await Promise.all(promises);
+    }
+    console.log(colorsarr);
     let item = new product({
         name: req.body.name,
         snippet: req.body.snippet,
-        thumbnail: req.file.thumbnail[0].path,
+        thumbnail: req.files.thumbnail[0].path,
         pictures: pictures,
         snippet: req.body.snippet,
         description: req.body.description,
         gender: req.body.gender,
         category: req.body.category,
-        colors: req.body.colors,
+        colors: colorsarr,
         sizes: req.body.sizes,
         inStock: req.body.inStock,
         normalPrice: req.body.price,
         promo: req.body.promo
     });
     try {
+
         item = await item.save();
         //res.redirect(`/items/${item.id}`)
-        res.redirect('/');
+        res.redirect(`/${item._id}/edit`);
     } catch (err) {
         console.log(err);
         res.render('mangement/add-item', { item: item });
@@ -145,4 +164,6 @@ router.delete('/del-color/:id', async function (req, res) {
     await colors.findByIdAndDelete(req.params.id);
     res.redirect('/management')
 });
+
+
 module.exports = router;

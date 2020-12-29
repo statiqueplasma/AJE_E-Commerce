@@ -8,7 +8,7 @@
 </div>
 <div class="form-group">
     <label for="description">Item's Description</label>
-    <textarea style="height:400px;" name="description" id="description" class="form-control"></textarea>
+    <textarea required style="height:400px;" name="description" id="description" class="form-control"></textarea>
 </div>
 <div class="form-group">
     <label for="thumbnail">Item's Thumbnail</label>
@@ -23,8 +23,8 @@
     <input style="width: 100px;" required type="number" name="price" id="price" class="form-control">
 </div>
 <div class="form-group">
-    <label for="promo">Promo (put 0 is no promo is applied to this item)</label>
-    <input style="width: 100px;" required type="number" name="promo" id="promo" class="form-control">
+    <label for="promo">Promo</label>
+    <input style="width: 100px;"  type="number" name="promo" id="promo" class="form-control">
 </div>
 <div class="form-group">
     <label for="inStock">Quantity in Stock</label>
@@ -56,28 +56,18 @@
         {{/each}}
     </div>
 </div>
-<div class="form-group">Colors:
-    <div class="row choices">
-        {{#each colors}}
-        <div class="form-check col-lg">
-            <input value="{{name}}" type="checkbox" name="colors" id="{{name}}" class="form-check-input">
-            <img style="width: 3rem;" for="{{name}}" src="/{{picture}}" alt="{{name}}">
-        </div>
-        {{/each}}
-    </div>
-</div>
 <div class="form-group">
     <label for="category">Category:</label>
-    <select name="category" id="category" class="form-select" aria-label="Default select example">
+    <select required name="category" id="category" class="form-select" aria-label="Default select example">
         {{#each categories}}
         <option value="{{name}}">{{name}}</option>
         {{/each}}
     </select>
 </div>
 
-<button type="submit" class="primary-btn">Add Item</button>
+<button type="submit" class="primary-btn">Next</button>
 
-<script>
+<script>    
     ClassicEditor
         .create(document.querySelector('#description'),{
 
@@ -86,5 +76,4 @@
             uploadUrl: '/management/uploads'
         }
     });
-    ClassicEditor.config.width =100;
 </script>
