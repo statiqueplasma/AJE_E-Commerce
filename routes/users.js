@@ -29,7 +29,7 @@ router.post('/add-cart', async function(req, res){
       }
     }
     if(found1 == 1){
-      user.cart.push({product_id: req.body.product_id, item = [newItem]});
+      user.cart.push({product_id: req.body.product_id, item : [newItem]});
     }
     
   });

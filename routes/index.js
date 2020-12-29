@@ -6,7 +6,7 @@ router.get('/',function(req,res){
   res.redirect('/page/1');
 });
 router.get('/page/:page', async function(req, res) {
-  var products = await product.find({name:'test4'}).lean();
+  var products = await product.find().lean();
   try{var curpage = req.params.page;
   var numItem = 30;
   var numbPages = Math.trunc(products.length/numItem)+1;

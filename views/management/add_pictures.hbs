@@ -1,0 +1,19 @@
+<div class="add-form">
+    <h1>Add Pictures for the Product</h1>
+    <form action="/management/item-pics" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="pictures">Item's Pictures</label>
+            <input required type="file" name="pictures" id="pictures" class="form-control" multiple>
+        </div>
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select required name="category" id="category" class="form-select" aria-label="Default select example">
+                <option value="" selected disabled hidden>Choose category</option>
+                {{#each categories}}
+                <option value="{{name}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <button type="submit" class="primary-btn">Save</button>
+    </form>
+</div>
