@@ -24,6 +24,7 @@ const adjust = (obj) => {
     }
   }
 
+  //THIS IS COMMENTED CAUSE THE DATABASE DOESN'T HAVE SIZES YET
   // if ("sizes" in obj) {
   //   if (typeof (obj["sizes"]) == "string") {
   //     params["sizes"] = obj["sizes"]
@@ -44,7 +45,7 @@ const adjust = (obj) => {
     params["rate"] = { $gte: minRating };
   }
 
-
+  // Sold_price ??????
   var min = parseInt(obj.range_1), max = parseInt(obj.range_2);
   params["normalPrice"] = {
     $gte: min,
@@ -73,7 +74,7 @@ router.get('/page/:page', async function (req, res) {
     if (curpage < numbPages) {
       pages.next = parseInt(curpage, 10) + 1;
     }
-    res.render('index', { title: 'Express', products: {} });
+    res.render('index', { title: 'Express', products: products, pages: pages });
   }
   catch (err) {
     console.log(err);
@@ -93,18 +94,19 @@ router.post('/', (req, res) => {
         { snippet: keywords },
         { description: keywords }
       ]
-    }, "colors category", (err, data) => {
-      res.send(data);
-    });
+    }, "colors category").lean().exec((err, products) => {
+      res.render('index', { title: 'Express', products: products });
+    })
 
   } else {
     var queryParams = adjust(req.body);
-    product.find(queryParams, (err, data) => {
+    console.log(queryParams)
+    product.find(queryParams).lean().exec((err, products) => {
       if (err) {
         res.send(err)
       } else {
         //DISPLAY THE ITEMS IN PAGES
-        res.send(data);
+        res.render('index', { title: 'Express', products: products });
         // var curpage = req.params.page;
         // var numItem = 30;
         // if (data.length > numItem) {

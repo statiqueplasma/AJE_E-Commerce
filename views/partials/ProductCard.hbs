@@ -1,23 +1,55 @@
-<div class="card">
+<div class="card" onclick="location.href='/product/{{_id}}">
+    <div class="card-top">
+        {{#if promo}}
+        <div class="sale">
+            <p>-{{promo}}%</p>
+        </div>
+        {{/if}}
+        <img class="thumbnail" src={{thumbnail}} alt="">
+
+    </div>
+    <div class="card-bottom">
+
+        <p class="name">{{name}}</p>
+        <p class="snippet">{{snippet}}</p>
+
+        <div class="price-see-more">
+            <div class="prices">
+                {{#if promo}}
+                <p class="old-price">{{normalPrice}} MAD</p>
+                <p class="current-price">{{normalPrice}} MAD</p>
+                {{else}}
+                <p class="current-price">{{normalPrice}} MAD</p>
+                </h5>
+                {{/if}}
+
+
+            </div>
+            <a class="see-more" href="#">Add to Cart</a>
+        </div>
+    </div>
+</div>
+
+{{!-- <div class="card">
     <div onclick="location.href='/product/{{_id}}';" class="picture">
         <img src={{thumbnail}} alt="">
     </div>
-    <div  class="card-body">
+    <div class="card-body">
         <div onclick="location.href='/product/{{_id}}';" class="link">
             <h2>{{name}}</h2>
             <p>{{snippet}}</p>
             <p class="rating"><i class="fas fa-star"></i> {{rate}}</p>
         </div>
-            <div class="price">
+        <div class="price">
 
-                {{#if promo}}
-                <h5>{{normalPrice}} MAD</h5>
-                <h5 class="before-promo">{{normalPrice}} MAD</h5>
-                {{else}}
-                <h5>{{normalPrice}} MAD</h5>
-                {{/if}}
+            {{#if promo}}
+            <h5>{{normalPrice}} MAD</h5>
+            <h5 class="before-promo">{{normalPrice}} MAD</h5>
+            {{else}}
+            <h5>{{normalPrice}} MAD</h5>
+            {{/if}}
 
-            </div>
+        </div>
         <a class="primary-btn" href="#">Add to Cart</a>
     </div>
 
@@ -27,4 +59,4 @@
         <h4 style="margin: 0;">PROMO -{{promo}}%</h4>
     </div>
     {{/if}}
-</div>
+</div> --}}

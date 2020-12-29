@@ -1,6 +1,7 @@
 :root {
-    --khaki: #e7e7de;
-    --cool-blue: rgb(0, 88, 122);
+    --khaki: #e2e2e2;
+    --cool-blue: rgb(0, 0, 0);
+    --pale-reddish-pink: rgb(238, 113, 124);
     --reddish-pink: rgb(234, 83, 95);
 }
 
@@ -17,7 +18,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 /* ######################### NAVBAR ######################### */
@@ -38,7 +39,7 @@ nav {
     width: 25%;
     text-align: center;
     font-family: 'Righteous', cursive;
-    color: white;
+    color: #F2F2F0;
     font-size: 1.1rem;
     letter-spacing: 0.5rem;
 }
@@ -58,7 +59,7 @@ nav {
 }
 
 li {
-    color: white;
+    color: #F2F2F0;
     min-width: 7rem fit-content;
     list-style: none;
     display: flex;
@@ -73,21 +74,22 @@ p.label {
 .nav-link {
     padding: 0 1rem;
     height: inherit;
-    width: fit-content;
+    width: 9rem;
     display: flex;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: 0.3s all ease;
 }
 
 .nav-link:hover {
-    background-color: rgb(0, 107, 150);
+    background-color: var(--pale-reddish-pink);
 }
 
 .filter-toggler {
     display: flex;
     align-items: center;
-    z-index: 1;
+    z-index: 50;
     height: inherit;
     cursor: pointer;
 }
@@ -176,7 +178,7 @@ p.label {
     position: fixed;
     top: 8vh;
     transform: translateY(-100%);
-    z-index: 0;
+    z-index: 50;
 }
 
 .active {
@@ -189,28 +191,28 @@ p.label {
 
 @keyframes active {
     from {
-        z-index: 0;
+        z-index: 50;
         transform: translateY(-100%);
     }
     99.9% {
-        z-index: 0;
+        z-index: 50;
     }
     to {
-        z-index: 1;
+        z-index: 50;
         transform: translateY(0%);
     }
 }
 
 @keyframes passive {
     from {
-        z-index: 1;
+        z-index: 50;
         transform: translateY(0%);
     }
     0.1% {
-        z-index: 0;
+        z-index: 50;
     }
     to {
-        z-index: 0;
+        z-index: 50;
         transform: translateY(-100%);
     }
 }
@@ -318,7 +320,11 @@ hr {
 /* ######################### END OF SEARCH BAR ######################### */
 
 @media (min-width:950px) {
-    .body{
+    .active ~ .body{
+        filter: blur(3px);
+    }
+    .body {
+        transition: 0.3s all ease;
         display: block !important;
     }
     .filter-form {

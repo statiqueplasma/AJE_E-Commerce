@@ -10,6 +10,7 @@ const navSlide = () => {
             container.classList.toggle("active");
             container.classList.toggle("passive");
             body.style.display = "block";
+            
             navLinks.forEach((link, index) => {
                 if (link.style.animation) {
                     link.style.animation = '';
@@ -19,7 +20,7 @@ const navSlide = () => {
             })
 
         } else {
-            body.style.display = "none"
+            body.style.display = "block";
             navLinks.forEach((link, index) => {
                 if (link.style.animation) {
                     link.style.animation = '';
@@ -31,7 +32,6 @@ const navSlide = () => {
     })
 }
 navSlide();
-
 const toggle = document.querySelector(".filter-toggler");
 toggle.addEventListener('click', function () {
     const container = document.querySelector(".container");
@@ -42,7 +42,6 @@ toggle.addEventListener('click', function () {
         container.classList.toggle("active");
         container.classList.toggle("passive");
         body.style.display = "block";
-        console.log("block");
     }
     else {
         nav.classList.toggle('nav-active');

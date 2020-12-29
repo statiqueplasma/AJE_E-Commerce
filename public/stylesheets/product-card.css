@@ -1,0 +1,245 @@
+.contents {
+    min-height: 100vh;
+    background-color: rgb(255, 255, 255);
+    min-width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 8rem 5rem;
+}
+body{
+    overflow-x: hidden;
+}
+
+.card {
+    position: relative;
+    margin: 1rem 1rem;
+    height: 23rem;
+    width: 16rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 5px 3px rgb(0, 0, 0, 0.25);
+    
+}
+
+.card-top {
+    height: 60%;
+    width: 100%;
+    background-color: #ffffff;
+    border-top-left-radius: 29px;
+    border-top-right-radius: 29px;
+    padding: 1rem 0 0 0;
+}
+
+.thumbnail {
+    max-width: 60%;
+    max-height: 90%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sale {
+    background-color: #EC646E;
+    z-index: 1;
+    text-align: center;
+    position: absolute;
+    top: 1rem;
+    transform: translateX(-12%);
+    padding: 0.5rem 1.5rem;
+}
+
+.card-bottom {
+    background-color: #FFEEEE;
+    height: 40%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.tags {
+    color: #858585;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.name {
+    color: black;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.snippet {
+    color: #b1b1b1;
+    font-size: 0.7rem;
+    margin-bottom: 7px;
+}
+
+.product-rating {
+    margin-top: 0.8rem;
+}
+
+.price-see-more {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 5px;
+}
+
+.prices {
+    width: 40%;
+}
+
+.old-price {
+    font-size: smaller;
+    font-weight: light;
+    color: rgb(2, 128, 168, 0.8);
+    text-decoration: line-through;
+}
+
+.current-price {
+    color: #10708E;
+    font-weight: bold;
+}
+
+.see-more {
+    background: linear-gradient(30deg,rgb(33, 143, 177), rgb(30, 98, 119));
+    text-decoration: none;
+    color: white;
+    width: fit-content;
+    text-align: center;
+    position: relative;
+    padding: 0.5rem 1rem;
+    
+    overflow: hidden;
+    transition: 0.3s all ease;
+}
+
+.see-more:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.623), transparent);
+    transition: 0.5s all ease;
+}
+.see-more:hover{
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+}
+.see-more:hover:after {
+    animation: glass 0.3s ease forwards;
+}
+
+@keyframes glass{
+    from{
+        left: -100%;
+    }
+    to{
+        left: 100%;
+    }
+}
+
+@media(min-width:708px) and (max-width:997px) {
+    .contents {
+        padding: 8rem 3rem;
+        justify-content: space-evenly;
+    }
+}
+
+@media(min-width:641px) and (max-width: 707px) {
+    .contents {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .product-rating, .see-more {
+        display: none;
+    }
+    .card-top{
+        height: 60%;
+    }
+    .card-bottom {
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+    .prices {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 640px) {
+    .contents {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .card {
+        max-height: 15rem;
+        width: 15rem;
+        max-width: 40vw;
+        margin: 2rem 0.2rem;
+        padding-top: 0;
+    }
+    .card-top {
+        height: 60%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .snippet, .see-more {
+        display: none;
+    }
+    .sale {
+        top: 0;
+        width: 100%;
+        z-index: 2;
+        height: fit-content;
+        padding: 0 1rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        left: 0;
+        transform: translate(0%, -100%);
+    }
+    .name, .old-price, .current-price {
+        font-size: 0.7rem;
+    }
+    .name {
+        font-weight: 600;
+    }
+    .current-price {
+        font-weight: 800;
+    }
+    .card-bottom {
+        height: 40%;
+        padding: 1rem;
+        display: block;
+        text-align: center;
+    }
+    .prices {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 390px){
+    .card{
+        height: 15rem;
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card-bottom{
+        padding: 1rem 0.5rem;
+    }
+}
