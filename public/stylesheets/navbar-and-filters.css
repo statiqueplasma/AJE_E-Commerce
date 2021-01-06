@@ -3,6 +3,7 @@
     --cool-blue: rgb(0, 0, 0);
     --pale-reddish-pink: rgb(238, 113, 124);
     --reddish-pink: rgb(234, 83, 95);
+    --eggshell: rgb(255, 246, 233);
 }
 
 ::selection {
@@ -17,7 +18,7 @@
 }
 
 body {
-    background-color:rgb(221, 221, 221);
+    background-color: var(--eggshell);
     font-family: 'Poppins', sans-serif;
     height: 100vh;
 }
@@ -61,15 +62,24 @@ nav {
 
 li {
     color: #F2F2F0;
-    min-width: 7rem fit-content;
+    min-width: 7rem;
     list-style: none;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+a:visited{
+    color: inherit;
+}
+
 p.label {
     font-size: 1rem;
+    margin: 0;
 }
 
 .nav-link {
@@ -321,7 +331,7 @@ hr {
 /* ######################### END OF SEARCH BAR ######################### */
 
 @media (min-width:950px) {
-    .active ~ .body{
+    .active~.body {
         filter: blur(3px);
     }
     .body {
@@ -437,15 +447,15 @@ hr {
     /* END OF RATING */
     /* START OF PRICE FILTER + BUTTONS */
     .price-filter {
-        width: inherit ;
+        width: inherit;
         height: 100%;
     }
     .rangeslider {
         margin-top: 2rem;
-        width: inherit ;
+        width: inherit;
     }
     input.max, input.min, .rangeslider {
-        width: inherit ;
+        width: inherit;
     }
     .last-filter {
         margin-bottom: 0;
@@ -498,7 +508,7 @@ hr {
 }
 
 @media (min-width:530px) and (max-width: 949px) {
-    .container{
+    .container {
         position: relative;
     }
     #search-input {
@@ -668,8 +678,8 @@ hr {
     }
     .rangeslider {
         padding-left: 1rem;
-        position: relative ;
-        width: 93% ;
+        position: relative;
+        width: 93%;
     }
     .buttons {
         height: 30%;
@@ -717,7 +727,7 @@ hr {
 }
 
 @media (max-width:529px) {
-    .container{
+    .container {
         position: relative;
     }
     #search-input {
@@ -833,7 +843,7 @@ hr {
     }
     .rangeslider {
         align-self: center;
-        position: relative ;
+        position: relative;
         width: 90%;
     }
     input.min, input.max {
@@ -884,4 +894,3 @@ hr {
 }
 
 /* ######################### END OF FILTERS ######################### */
-

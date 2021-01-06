@@ -1,272 +1,270 @@
-<style>
-    .hr {
-        color: grey;
-        height: 2px;
-        width: 90%;
-        margin: auto 0.5rem auto 0.5rem;
-    }
+<div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' type="text/css" />
+    <link rel='stylesheet' href='/stylesheets/ckeditor.css' type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/price-range.css">
+    <link rel="stylesheet" href="/stylesheets/navbar-and-filters.css">
+    <style>
+        .container {
+            max-width: 100vw;
+        }
+    </style>
 
-    p {
-        float: left;
-        margin: 0;
 
-    }
-</style>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<link rel='stylesheet' href='/stylesheets/style.css' type="text/css" />
-<link rel='stylesheet' href='/stylesheets/ckeditor.css' type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+    <script src="https://kit.fontawesome.com/30076e29b6.js" crossorigin="anonymous"></script>
 
-<script src="https://kit.fontawesome.com/30076e29b6.js" crossorigin="anonymous"></script>
+    <div class="modal fade" tabindex="-1" id="add-category">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/management/category" method="POST">
+                        <div class="form-group">
+                            <label for="name">Category's Name</label>
+                            <input required type="text" name="name" id="name" class="form-control">
+                        </div>
+                        <button style="float:right;" type="submit" class="primary-btn">Add Category</button>
+                    </form>
+                </div>
 
-<div class="modal fade" tabindex="-1" id="add-category">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add category</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="/management/category" method="POST">
-                    <div class="form-group">
-                        <label for="name">Category's Name</label>
-                        <input required type="text" name="name" id="name" class="form-control">
-                    </div>
-                    <button style="float:right;" type="submit" class="primary-btn">Add Category</button>
-                </form>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="add-size">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add a Size</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/management//size" method="POST">
+                        <div class="form-group">
+                            <label for="name">Size</label>
+                            <input required type="text" name="name" id="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Mesures for the Size</label>
+                            <input required type="text" name="size" id="size" class="form-control">
+                        </div>
+                        <button style="float:right;" type="submit" class="primary-btn">Add Size</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" tabindex="-1" id="add-color">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add a Color</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/management/color" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Color's Name</label>
+                            <input required type="text" name="name" id="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="picture">Color's Image Representative</label>
+                            <input required type="file" name="picture" id="picture" class="form-control">
+                        </div>
+                        <button style="float:right;" type="submit" class="primary-btn">Add Color</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="justify-content: center; display: flex ;" class="row management">
+
+        <div class="card col-xs-12 col-md-6">
+            <div class="title-block">
+                <h1>Categories</h1>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#add-category" class="primary-btn"><i
+                        class="fas fa-plus-square"></i></a>
+            </div>
+            <div class="table-responsive">
+                <table style="height:400px" class="table table-striped table-hover table-bordered ">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each categories}}
+                        <tr>
+                            <th scope="row">{{@index}}</th>
+                            <td>{{name}}</td>
+                            <td>
+                                <form action="/management/del-cat/{{_id}}?_method=DELETE" method="POST"> <button
+                                        style="float: right; width: max-content; " type="submit"
+                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></form>
+
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card col-xs-12 col-md-6">
+            <div class="title-block">
+                <h1>Sizes</h1>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#add-size" class="primary-btn"><i
+                        class="fas fa-plus-square"></i></a>
+            </div>
+            <div class="table-responsive">
+                <table style="height:400px" class="table table-striped table-hover table-bordered ">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Mesures</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each sizes}}
+                        <tr>
+                            <th scope="row">{{@index}}</th>
+                            <td>{{name}}</td>
+                            <td>{{size}}</td>
+                            <td>
+                                <form action="/management/del-size/{{_id}}?_method=DELETE" method="POST"> <button
+                                        style="float: right; width: max-content; " type="submit"
+                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></form>
+
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="justify-content: center; display: flex ;" class="row management">
+        <div class="card col-lg-6">
+            <div class="title-block">
+                <h1>Colors</h1>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#add-color" class="primary-btn"><i
+                        class="fas fa-plus-square"></i></a>
+            </div>
+            <div class="table-responsive">
+                <table style="height:400px;" class="table table-striped table-hover table-bordered ">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tag</th>
+                            <th scope="col">Picture</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each colors}}
+                        <tr>
+                            <th scope="row">{{@index}}</th>
+                            <td>{{name}}</td>
+                            <td><img style="width: 3rem;" src="/{{picture}}" alt="{{name}}"></td>
+                            <td>
+                                <form action="/management/del-color/{{_id}}?_method=DELETE" method="POST"> <button
+                                        style="float: right; width: max-content; " type="submit"
+                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></form>
+
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="justify-content: center; display: flex ;" class="row management">
+        <div id="item-table" class="card col-lg-12 table-responsive">
+            <div class="title-block">
+                <h1>Items</h1>
+                <a href="/management/add-item" class="primary-btn"><i class="fas fa-plus-square"></i></a>
+            </div>
+            <div class="table-responsive">
+                <table style="height:1500px" class="table table-striped table-hover table-bordered ">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Thumbnail</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Colors</th>
+                            <th scope="col">Sizes</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col">In Stock</th>
+                            <th scope="col">Promo</th>
+                            <th scope="col">Solding Price</th>
+                            <th scope="col">Added Date</th>
+                            <th scope="col">
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each product}}
+                        <tr>
+                            <th scope="row">{{@index}}</th>
+                            <td><img style="width:5rem;" src="/{{thumbnail}}" alt=""></td>
+                            <th scope="col">{{name}}</th>
+                            <th scope="col">{{gender}}</th>
+                            <th scope="col">{{category}}</th>
+                            <th scope="col">{{colors}}</th>
+                            <th scope="col">{{sizes}}</th>
+                            <th scope="col">{{rate}}</th>
+                            <th scope="col">{{inStock}}</th>
+                            <th scope="col">{{promo}}</th>
+                            <th scope="col">{{sold_price}}</th>
+                            <th scope="col">{{date}}</th>
+                            <th scope="col">
+                                <form action="/management/del-item/{{_id}}?_method=DELETE" method="POST"> <button
+                                        style="float: right; width: max-content; " type="submit"
+                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></form>
+                                </form>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
 
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <script>
+        $('.icon').click(function () {
+            $('span').toggleClass("cancel");
+        });
+    </script>
 </div>
-
-<div class="modal fade" tabindex="-1" id="add-size">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add a Size</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="/management//size" method="POST">
-                    <div class="form-group">
-                        <label for="name">Size</label>
-                        <input required type="text" name="name" id="name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="size">Mesures for the Size</label>
-                        <input required type="text" name="size" id="size" class="form-control">
-                    </div>
-                    <button style="float:right;" type="submit" class="primary-btn">Add Size</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade" tabindex="-1" id="add-color">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add a Color</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="/management/color" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="name">Color's Name</label>
-                        <input required type="text" name="name" id="name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="picture">Color's Image Representative</label>
-                        <input required type="file" name="picture" id="picture" class="form-control">
-                    </div>
-                    <button style="float:right;" type="submit" class="primary-btn">Add Color</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-
-<div style="justify-content: center; display: flex ;" class="row management">
-
-    <div class="card col-xs-12 col-md-6">
-        <div class="title-block">
-            <h1>Categories</h1>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#add-category" class="primary-btn"><i
-                    class="fas fa-plus-square"></i></a>
-        </div>
-        <div class="table-responsive">
-            <table style="height:400px" class="table table-striped table-hover table-bordered ">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each categories}}
-                    <tr>
-                        <th scope="row">{{@index}}</th>
-                        <td>{{name}}</td>
-                        <td>
-                            <form action="/management/del-cat/{{_id}}?_method=DELETE" method="POST"> <button
-                                    style="float: right; width: max-content; " type="submit" class="btn btn-danger"><i
-                                        class="fas fa-trash-alt"></i></button></form>
-
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="card col-xs-12 col-md-6">
-        <div class="title-block">
-            <h1>Sizes</h1>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#add-size" class="primary-btn"><i
-                    class="fas fa-plus-square"></i></a>
-        </div>
-        <div class="table-responsive">
-            <table style="height:400px" class="table table-striped table-hover table-bordered ">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Size</th>
-                        <th scope="col">Mesures</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each sizes}}
-                    <tr>
-                        <th scope="row">{{@index}}</th>
-                        <td>{{name}}</td>
-                        <td>{{size}}</td>
-                        <td>
-                            <form action="/management/del-size/{{_id}}?_method=DELETE" method="POST"> <button
-                                    style="float: right; width: max-content; " type="submit" class="btn btn-danger"><i
-                                        class="fas fa-trash-alt"></i></button></form>
-
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div style="justify-content: center; display: flex ;" class="row management">
-    <div class="card col-lg-6">
-        <div class="title-block">
-            <h1>Colors</h1>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#add-color" class="primary-btn"><i
-                    class="fas fa-plus-square"></i></a>
-        </div>
-        <div  class="table-responsive">
-            <table style="height:400px;" class="table table-striped table-hover table-bordered ">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tag</th>
-                        <th scope="col">Picture</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each colors}}
-                    <tr>
-                        <th scope="row">{{@index}}</th>
-                        <td>{{name}}</td>
-                        <td><img style="width: 3rem;" src="/{{picture}}" alt="{{name}}"></td>
-                        <td>
-                            <form action="/management/del-color/{{_id}}?_method=DELETE" method="POST"> <button
-                                    style="float: right; width: max-content; " type="submit" class="btn btn-danger"><i
-                                        class="fas fa-trash-alt"></i></button></form>
-
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div style="justify-content: center; display: flex ;" class="row management">
-    <div id="item-table" class="card col-lg-12 table-responsive">
-        <div class="title-block">
-            <h1>Items</h1>
-            <a href="/management/add-item" class="primary-btn"><i class="fas fa-plus-square"></i></a>
-        </div>
-        <div class="table-responsive">
-            <table style="height:1500px" class="table table-striped table-hover table-bordered ">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Thumbnail</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Colors</th>
-                        <th scope="col">Sizes</th>
-                        <th scope="col">Rate</th>
-                        <th scope="col">In Stock</th>
-                        <th scope="col">Promo</th>
-                        <th scope="col">Solding Price</th>
-                        <th scope="col">Added Date</th>
-                        <th scope="col">
-
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each product}}
-                    <tr>
-                        <th scope="row">{{@index}}</th>
-                        <td><img style="width:5rem;" src="/{{thumbnail}}" alt=""></td>
-                        <th scope="col">{{name}}</th>
-                        <th scope="col">{{gender}}</th>
-                        <th scope="col">{{category}}</th>
-                        <th scope="col">{{colors}}</th>
-                        <th scope="col">{{sizes}}</th>
-                        <th scope="col">{{rate}}</th>
-                        <th scope="col">{{inStock}}</th>
-                        <th scope="col">{{promo}}</th>
-                        <th scope="col">{{sold_price}}</th>
-                        <th scope="col">{{date}}</th>
-                        <th scope="col">
-                            <form action="/management/del-item/{{_id}}?_method=DELETE" method="POST"> <button
-                                    style="float: right; width: max-content; " type="submit" class="btn btn-danger"><i
-                                        class="fas fa-trash-alt"></i></button></form>
-                            </form>
-                        </th>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-<script>
-  $('.icon').click(function () {
-    $('span').toggleClass("cancel");
-  });
-</script>
